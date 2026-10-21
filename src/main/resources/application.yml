@@ -1,0 +1,46 @@
+server:
+  port: 2210
+
+logging:
+  level:
+    org.springframework.security: trace
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/auth_server_db
+    username: postgres
+    password: 180805
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  security:
+    user:
+      name: user
+      password: qwer
+    oauth2:
+      authorizationserver:
+        client:
+          oidc-client:
+            registration:
+              client-id: "oidc-client"
+              client-secret: "{noop}secret"
+              client-authentication-methods:
+                - "client_secret_basic"
+              authorization-grant-types:
+                - "authorization_code"
+                - "refresh_token"
+              redirect-uris:
+                - "http://127.0.0.1:8080/login/oauth2/code/oidc-client"
+                - "https://oauth.pstmn.io/v1/callback"
+                - "https://oauth.pstmn.io/v1/browser-callback"
+              post-logout-redirect-uris:
+                - "http://127.0.0.1:8080/"
+              scopes:
+                - "openid"
+                - "profile"

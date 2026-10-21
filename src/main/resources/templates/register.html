@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ចុះឈ្មោះប្រើប្រាស់</title>
+</head>
+<body>
+<h2>ចុះឈ្មោះគណនីថ្មី</h2>
+<form th:action="@{/register}" th:object="${user}" method="post">
+    <div>
+        <label>ឈ្មោះអ្នកប្រើប្រាស់ (Username):</label>
+        <input type="text" th:field="*{username}" required />
+    </div>
+    <div>
+        <label>ពាក្យសម្ងាត់ (Password):</label>
+        <input type="password" th:field="*{password}" required />
+    </div>
+    <button type="submit">ចុះឈ្មោះ</button>
+</form>
+<p>មានគណនីហើយរឹតតែងាយស្រួល? <a th:href="@{/login}">ចូលគណនី (Login)</a></p>
+</body>
+</html>

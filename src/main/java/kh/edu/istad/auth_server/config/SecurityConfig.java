@@ -51,9 +51,10 @@ public class SecurityConfig {
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/auth/**", "/login").permitAll() // អនុញ្ញាតให้เข้าถึงหน้า login ได้
                         .anyRequest().authenticated()
                 )
+                .formLogin(form -> form.permitAll()) // បើក formLogin ឲ្យដំណើរការទំព័រ login
                 .csrf(csrf -> csrf.disable());
 
         return http.build();

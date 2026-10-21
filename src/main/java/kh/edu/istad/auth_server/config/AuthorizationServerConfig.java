@@ -1,4 +1,3 @@
-
 package kh.edu.istad.auth_server.config;
 
 import java.security.KeyPair;
@@ -41,8 +40,9 @@ public class AuthorizationServerConfig {
                                 AuthorizationGrantType.AUTHORIZATION_CODE)
                         .authorizationGrantType(
                                 AuthorizationGrantType.REFRESH_TOKEN)
-                        .redirectUri(
-                                "http://127.0.0.1:8080/login/oauth2/code/oidc-client")
+                        // កែសម្រួល Redirect URIs ឱ្យមានទាំងរបស់ Postman និង Localhost
+                        .redirectUri("https://oauth.pstmn.io/v1/callback")
+                        .redirectUri("http://127.0.0.1:8080/login/oauth2/code/oidc-client")
                         .postLogoutRedirectUri("http://127.0.0.1:8080/")
                         .scope(OidcScopes.OPENID)
                         .scope(OidcScopes.PROFILE)
@@ -105,7 +105,8 @@ public class AuthorizationServerConfig {
     @Bean
     public AuthorizationServerSettings authorizationServerSettings() {
         return AuthorizationServerSettings.builder()
-                .issuer("http://localhost:9000")
+                // កែសម្រួល Port ឱ្យត្រូវជាមួយ Server របស់អ្នក (2210)
+                .issuer("http://localhost:2210")
                 .build();
     }
 }

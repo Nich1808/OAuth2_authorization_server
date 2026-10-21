@@ -5,10 +5,8 @@ public class UserResponse {
     private String username;
     private String email;
 
-    // Default constructor
     public UserResponse() {}
 
-    // All-args constructor
     public UserResponse(Long id, String username, String email) {
         this.id = id;
         this.username = username;

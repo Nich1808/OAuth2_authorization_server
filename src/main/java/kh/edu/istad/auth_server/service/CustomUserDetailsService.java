@@ -13,7 +13,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    // Explicit constructor for dependency injection
     public CustomUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }

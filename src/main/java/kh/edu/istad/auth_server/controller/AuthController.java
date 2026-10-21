@@ -12,7 +12,6 @@ public class AuthController {
 
     private final UserService userService;
 
-    // Explicit constructor for Spring dependency injection
     public AuthController(UserService userService) {
         this.userService = userService;
     }

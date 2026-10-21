@@ -48,21 +48,16 @@ public class SecurityConfig {
 
 
     @Bean
-    @Order(2)
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http
-                // 1. បិទ CSRF ទាំងស្រុងដើម្បីកុំឱ្យវាបដិសេធ POST Request របស់អ្នក
-                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
-                        // 2. អនុញ្ញាតឱ្យចូលប្រើ /register បានដោយសេរីទាំង GET និង POST
-                        .requestMatchers("/register", "/css/**", "/js/**").permitAll()
+                        .requestMatchers("/api/auth/**").permitAll()
                         .anyRequest().authenticated()
                 )
-                .formLogin(Customizer.withDefaults());
+                .csrf(csrf -> csrf.disable());
 
         return http.build();
     }
-
     @Bean
     public JwtDecoder jwtDecoder(KeyPair rsaKeyPair) {
         RSAPublicKey publicKey =

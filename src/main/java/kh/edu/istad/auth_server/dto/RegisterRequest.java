@@ -5,7 +5,6 @@ public class RegisterRequest {
         private String password;
         private String email;
 
-        // Getters
         public String getUsername() {
                 return username;
         }
@@ -18,7 +17,6 @@ public class RegisterRequest {
                 return email;
         }
 
-        // Setters
         public void setUsername(String username) {
                 this.username = username;
         }
